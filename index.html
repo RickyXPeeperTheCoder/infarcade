@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- This is based on DillingerLee's great template here:
+https://github.com/Team-Code/KA_Offline -->
+<html> 
+ <head>
+    <title>Processing.JS inside Webpages: Template</title> 
+</head>
+ <body>
+ <h1>Welcome to the Infinity Arcade</h1>
+    <p align="center"> 
+	<!--This draws the Canvas on the webpage -->
+      <canvas id="mycanvas"></canvas> 
+    </p>
+ </body>
+ <
+ <!-- Run all the JavaScript stuff -->
+ <!-- Include the processing.js library -->
+ <!-- See https://khanacademy.zendesk.com/hc/en-us/articles/202260404-What-parts-of-ProcessingJS-does-Khan-Academy-support- for differences -->
+ <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+ 
+ <script>
+    var sketchProc = function(processingInstance) {
+     with (processingInstance) {
+        size(400, 400); 
+        frameRate(30);
+        
+        // ProgramCodeGoesHere
+var ballX = 200;
+var ballY = 200;
+var speed = 4;
+var prevscore = 0; 
+var rwidth = width/400;
+var rheight = height/400;
+var start = millis();  textAlign(CENTER,CENTER); 
+draw = function() {
+    background(0, 0, 0);
+    stroke(255, 255, 255);
+    speed = speed + 0.025;
+    text(prevscore
+     if (mouseX < width/2 && mouseY < height/2) {ballX = ballX - (speed * rwidth); ballY = ballY - (speed * rheight);} else if (mouseX > width/2 && mouseY < height/2) {ballY = ballY - (speed * rheight); ballX = ballX + (speed * rwidth);} else if (mouseX > width/2 && mouseY > height/2) {ballY = ballY + (speed * rheight); ballX = ballX + (speed * rwidth);} else if (mouseX < width/2 && mouseY > height/2) {ballX = ballX - (speed * rwidth); ballY = ballY + (speed * rheight);}
+        fill(0, 0, 0);
+        ellipse(ballX,ballY,30,30);
+        if (ballX > width || ballY > height || ballX < 0 || ballY < 0) {background(255,255,255); ballX = 680; ballY = 680; mouseClicked = function () {prevscore = millis() - start; Program.restart();}; text("u got prankd",width/2,width/2);} fill(255, 255, 255,50);
+   text((millis()-start)/100,200,200);     };
+
+    }};
+
+    // Get the canvas that Processing-js will use
+    var canvas = document.getElementById("mycanvas"); 
+    // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
+    var processingInstance = new Processing(canvas, sketchProc); 
+ </script>
+
+</html>
